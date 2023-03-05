@@ -1,10 +1,10 @@
 local telescope = require("telescope")
 
-telescope.setup ({
+telescope.setup({
 	defaults = {
 		layout_config = {
-			vertical = { width = 0.5 }
-		}
+			vertical = { width = 0.5 },
+		},
 	},
 	extensions = {
 		fzf = {
@@ -12,8 +12,21 @@ telescope.setup ({
 			override_generic_sorter = true,
 			override_file_sorter = true,
 			case_mode = "smart_case",
-		}
-	}
+		},
+		file_browser = {
+			theme = "ivy",
+			-- disables netrw and use telescope-file-browser in its place
+			hijack_netrw = true,
+			mappings = {
+				["i"] = {
+					-- your custom insert mode mappings
+				},
+				["n"] = {
+					-- your custom normal mode mappings
+				},
+			},
+		},
+	},
 })
 
 telescope.load_extension("fzf")
